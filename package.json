@@ -3,19 +3,7 @@
   "name": "startbootstrap-clean-blog",
   "version": "4.0.0-beta",
   "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
-  "keywords": [
-    "css",
-    "sass",
-    "html",
-    "responsive",
-    "theme",
-    "template"
-  ],
   "homepage": "https://startbootstrap.com/template-overviews/clean-blog",
-  "bugs": {
-    "url": "https://github.com/BlackrockDigital/startbootstrap-clean-blog/issues",
-    "email": "feedback@startbootstrap.com"
-  },
   "license": "MIT",
   "author": "Start Bootstrap",
   "contributors": [
@@ -23,21 +11,24 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-clean-blog.git"
+    "url": "git+https://github.com/BlackrockDigital/startbootstrap-clean-blog.git"
+  },
+  "scripts": {
+    "start": "node server/app",
+    "dev": "nodemon server/app",
+    "build:scss": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css",
+    "build:scss:watch": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css --watch"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "express": "^4.15.4",
     "font-awesome": "4.7.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.11.1"
   },
   "devDependencies": {
-    "browser-sync": "2.18.13",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "3.7.0",
-    "gulp-header": "1.8.9",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "3.0.0"
-  }
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0"
+  },
+  "main": "index.js"
 }
