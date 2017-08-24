@@ -1,4 +1,4 @@
 angular.module("myCoolApp")
-  .controller('HomeController', function($scope) {
-    $scope.section = 'Home'
+  .controller('HomeController', function() {
+    this.section = 'Home'
   })

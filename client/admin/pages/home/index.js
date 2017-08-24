@@ -3,6 +3,7 @@ angular.module("myCoolApp")
       $routeProvider
         .when('/', {
           templateUrl: '/admin/pages/home/template.html',
-          controller: 'HomeController'
+          controller: 'HomeController',
+          controllerAs: 'vm'
         })
     })
