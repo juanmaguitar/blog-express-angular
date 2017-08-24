@@ -7,13 +7,13 @@ html(lang='en')
     meta(name='author', content='')
     title Clean Blog - Start Bootstrap Theme
     include ../includes/_styles
-  body
+  body(id=section)
     include _navbar
     block header
       include _header
     // Main Content
     .container
-      block content 
+      block content
     hr
     block footer
       include _footer
