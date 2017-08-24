@@ -1,8 +1,8 @@
 // Page Header
-header.masthead(style="background-image: url('img/home-bg.jpg')")
+header.masthead(style=styleHeader)
   .container
     .row
       .col-lg-8.col-md-10.mx-auto
         .site-heading
-          h1 Clean Blog
-          span.subheading A Blog Theme by Start Bootstrap
+          h1= headerTitle || 'Clean Blog'
+          span.subheading= headerSubTitle || 'A Blog Theme by Start Bootstrap'

@@ -6,12 +6,15 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     title Clean Blog - Start Bootstrap Theme
-    include ../includes/styles.pug
+    include ../includes/_styles
   body
-    include header.pug  
+    include _navbar
+    block header
+      include _header
     // Main Content
     .container
       block content 
     hr
-    include footer.pug  
-    include ../includes/scripts.pug
+    block footer
+      include _footer
+    include ../includes/_scripts
