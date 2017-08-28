@@ -1,10 +1,19 @@
 const express = require('express')
 const path = require('path')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
+
 const app = express()
 
 const PORT = process.env.PORT || 3001
 const clientPath = path.join(__dirname, '../client')
 const viewsPath = path.join(__dirname, 'views')
+
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost/clean-blog',  {useMongoClient: true})
+const db = mongoose.connection
 
 const marked = require('marked')
 marked.setOptions({
@@ -19,39 +28,18 @@ marked.setOptions({
 })
 app.locals.marked = marked
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(session())
+
 app.set('view engine', 'pug')
 app.set('views', viewsPath)
+
 app.use(express.static(clientPath))
 
-app.get('/', (req, res) => {
-  const section = 'home'
-  const styleHeader = `background-image: url('img/home-bg.jpg')`
-  const posts = require('./data/posts.json')
-  res.render('home.pug', { section, posts, styleHeader })
-})
-
-app.get('/about', (req, res) => {
-  const section = 'about'
-  const styleHeader = `background-image: url('img/about-bg.jpg')`
-  const headerTitle = 'About Me'
-  const headerSubTitle = 'This is what I do.'
-  res.render('about', { section, headerTitle, headerSubTitle, styleHeader })
-})
-
-app.get('/contact', (req, res) => {
-  const section = 'contact'
-  const styleHeader = `background-image: url('img/contact-bg.jpg')`
-  const headerTitle = 'Contact Me'
-  const headerSubTitle = 'Have questions? I have answers (maybe).'
-  res.render('contact', { section, headerTitle, headerSubTitle, styleHeader })
-})
-
-app.get('/post', (req, res) => {
-  const section = 'post'
-  const post = require('./data/posts/4371598efb17446e90a48887a8e9cc45.json')
-  const styleHeader = `background-image: url('img/post-bg.jpg')`
-  res.render('post', { section, post, styleHeader})
-})
+app.use(require('./routes/views/'))
+app.use('/api', require('./routes/api/'));
 
 app.listen(PORT)
 console.log(`Magic happens at PORT ${PORT}...`)
