@@ -9,7 +9,7 @@ angular.module('myApp.services', [])
     return {
       getPages: function () {
         return $http.get('/api/pages')
-                .then( response => response.data )
+                .then(response => response.data)
       },
 
       savePage: function (pageData) {
@@ -29,6 +29,16 @@ angular.module('myApp.services', [])
       },
       getPageContent: function (url) {
         return $http.get('/api/pages/details/' + url)
+      }
+    }
+  }])
+  .factory('AuthService', ['$http', function ($http) {
+    return {
+      login: function (credentials) {
+        return $http.post('/api/login', credentials)
+      },
+      logout: function () {
+        return $http.get('/api/logout')
       }
     }
   }])
