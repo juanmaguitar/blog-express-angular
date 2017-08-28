@@ -1,50 +1,22 @@
 const express = require('express')
-const mongoose = require('mongoose')
 const bcrypt = require('bcrypt-nodejs')
 const Page = require('../../models/Post')
 const AdminUser = require('../../models/AdminUser')
 
 const router = express.Router()
 
-/* User Routes. */
+const getAllPages = require('./handlers/getAllPages')
+const addPage = require('./handlers/addPage')
+const updatePage = require('./handlers/updatePage')
 
 router.get('/', function (req, res) {
   res.send('Welcome to the API zone')
 })
 
-router.get('/pages', function (request, response) {
-  Page.find()
-    .then(pages => response.json(pages))
-    .catch(console.log)
-})
+router.get('/pages', getAllPages)
 
-router.post('/pages/add', sessionCheck, function (request, response) {
-  const page = new Page({
-    title: request.body.title,
-    url: request.body.url,
-    content: request.body.content,
-    menuIndex: request.body.menuIndex,
-    date: new Date(Date.now())
-  })
-
-  page.save()
-    .then(page => response.send(200, page))
-    .catch(err => response.send(500, err))
-})
-
-router.post('/pages/update', sessionCheck, function (request, response) {
-  const id = request.body._id
-
-  return Page.findByIdAndUpdate(id,
-    {
-      title: request.body.title,
-      url: request.body.url,
-      content: request.body.content,
-      menuIndex: request.body.menuIndex,
-      date: new Date(Date.now())
-    })
-    .then(() => response.send('Page updated'))
-})
+router.post('/pages/add', sessionCheck, addPage)
+router.post('/pages/update', sessionCheck, updatePage)
 
 router.get('/pages/delete/:id', sessionCheck, function (request, response) {
   const id = request.params.id

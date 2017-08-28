@@ -11,8 +11,10 @@ const Page = new Schema({
   author: String,
   content: String,
   menuIndex: Number,
-  date: Date,
-  createdAt: String
+  createdAt: {
+    type: Date,
+    default: new Date()
+  }
 })
 
 module.exports = mongoose.model('Page', Page)
