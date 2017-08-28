@@ -8,8 +8,8 @@ const session = require('express-session')
 const app = express()
 
 const PORT = process.env.PORT || 3001
-const clientPath = path.join(__dirname, '../client')
-const clientAdminPath = path.join(__dirname, '../client-angular-admin')
+const publicPath = path.join(__dirname, '../public')
+const clientAdminPath = path.join(__dirname, '../client-angular-admin/app')
 const viewsPath = path.join(__dirname, 'views')
 
 mongoose.Promise = global.Promise
@@ -32,17 +32,20 @@ app.locals.marked = marked
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(session())
+app.use(session({ secret: 'N2I0ZTRjYTUxODMxN2RiODEzMmFmNmRlYzIzMjQyZWI' }))
 
 app.set('view engine', 'pug')
 app.set('views', viewsPath)
 
-app.use(express.static(clientPath))
+app.use(express.static(publicPath))
 app.use('/admin', express.static(clientAdminPath))
 
-
 app.use(require('./routes/views/'))
-app.use('/api', require('./routes/api/'));
+app.use('/api', require('./routes/api/'))
+
+app.get('/admin/*', function (request, response) {
+  response.sendfile('./client-angular-admin/app/index.html')
+})
 
 app.listen(PORT)
 console.log(`Magic happens at PORT ${PORT}...`)
