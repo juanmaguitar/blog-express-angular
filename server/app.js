@@ -45,7 +45,8 @@ app.use(express.static(publicPath))
 app.use('/admin', express.static(clientAdminPath))
 
 app.use(require('./routes/views/'))
-app.use('/api', require('./routes/api/'))
+app.use('/api', require('./routes/api/pages/'))
+app.use('/api', require('./routes/api/auth/'))
 
 app.get('/admin/*', function (request, response) {
   response.sendfile('./client-angular-admin/app/index.html')

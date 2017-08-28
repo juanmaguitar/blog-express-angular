@@ -1,4 +1,4 @@
-const Page = require('../../../models/Post')
+const Page = require('../../../../models/Post')
 
 function updatePage (req, res) {
   const { _id: id, title, url, content, menuIndex } = req.body

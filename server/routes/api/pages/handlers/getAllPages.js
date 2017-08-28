@@ -1,4 +1,4 @@
-const Page = require('../../../models/Post')
+const Page = require('../../../../models/Post')
 
 function getAllPages (req, res) {
   Page.find()

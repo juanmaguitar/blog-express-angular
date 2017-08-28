@@ -1,4 +1,4 @@
-const Page = require('../../../models/Post')
+const Page = require('../../../../models/Post')
 
 function addPage (req, res) {
   const { title, url, content, menuIndex } = req.body
