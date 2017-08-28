@@ -9,6 +9,7 @@ const app = express()
 
 const PORT = process.env.PORT || 3001
 const clientPath = path.join(__dirname, '../client')
+const clientAdminPath = path.join(__dirname, '../client-angular-admin')
 const viewsPath = path.join(__dirname, 'views')
 
 mongoose.Promise = global.Promise
@@ -37,6 +38,8 @@ app.set('view engine', 'pug')
 app.set('views', viewsPath)
 
 app.use(express.static(clientPath))
+app.use('/admin', express.static(clientAdminPath))
+
 
 app.use(require('./routes/views/'))
 app.use('/api', require('./routes/api/'));
