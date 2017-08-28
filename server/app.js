@@ -32,7 +32,11 @@ app.locals.marked = marked
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(session({ secret: 'N2I0ZTRjYTUxODMxN2RiODEzMmFmNmRlYzIzMjQyZWI' }))
+app.use(session({
+  secret: 'N2I0ZTRjYTUxODMxN2RiODEzMmFmNmRlYzIzMjQyZWI',
+  resave: true,
+  saveUninitialized: true
+}))
 
 app.set('view engine', 'pug')
 app.set('views', viewsPath)
