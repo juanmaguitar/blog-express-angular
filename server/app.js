@@ -42,7 +42,7 @@ app.set('view engine', 'pug')
 app.set('views', viewsPath)
 
 app.use(express.static(publicPath))
-app.use('/admin', express.static(clientAdminPath))
+app.use('/admin/', express.static(clientAdminPath))
 
 app.use(require('./routes/views/'))
 app.use('/api', require('./routes/api/pages/'))
