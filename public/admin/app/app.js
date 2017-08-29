@@ -6,7 +6,6 @@ angular.module('myApp',
   [
     'ngRoute',
     'myApp.filters',
-    'myApp.controllers',
     'myApp.services',
     'myApp.components',
     'ui.tinymce',

@@ -10,20 +10,19 @@
   <link rel="stylesheet" href="/admin/css/app.css" />
 </head>
 
-<body ng-controller="AppCtrl">
-  <div admin-login class="col-md-3 pull-right"></div>
-  <div class="container">
-    <header>
-      <img ng-src="{{site.logo}}">
-    </header>
-    <message-flash></message-flash>
-    <div class="row">
-      <div class="col-md-3" nav-bar></div>
-      <div class="col-md-6" ng-view></div>
-    </div>
-    <footer>{{site.footer}}</footer>
-  </div>
+<body>
 
+  <header>
+    <nav-bar></nav-bar>
+  </header>
+  <div class="container">
+    <message-flash></message-flash>
+    <ng-view></ng-view>
+  </div>
+  <footer class="footer">Copyright 2014 Angular CMS</footer>
+
+  <script src="/jquery/dist/jquery.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/angular/angular.js"></script>
   <script src="/angular-route/angular-route.js"></script>
   <script src="/angular-cookies/angular-cookies.js"></script>
@@ -33,7 +32,6 @@
   <script src="/admin/app/app.js"></script>
 
   <script src="/admin/app/filters/index.js"></script>
-  <script src="/admin/app/controllers/index.js"></script>
 
   <!-- SERVICES -->
   <script src="/admin/app/services/index.js"></script>
@@ -45,35 +43,31 @@
 
   <!-- @begin ROUTES -->
 
-    <!-- /pages -->
-    <script src="/admin/app/routes/pages/controller.js"></script>
-    <script src="/admin/app/routes/pages/config.js"></script>
+  <!-- /pages -->
+  <script src="/admin/app/routes/pages/controller.js"></script>
+  <script src="/admin/app/routes/pages/config.js"></script>
 
-    <!-- /login -->
-    <script src="/admin/app/routes/login/controller.js"></script>
-    <script src="/admin/app/routes/login/config.js"></script>
+  <!-- /login -->
+  <script src="/admin/app/routes/login/controller.js"></script>
+  <script src="/admin/app/routes/login/config.js"></script>
 
-    <!-- /add-edit-page -->
-    <script src="/admin/app/routes/add-edit-page/controller.js"></script>
-    <script src="/admin/app/routes/add-edit-page/config.js"></script>
+  <!-- /add-edit-page -->
+  <script src="/admin/app/routes/add-edit-page/controller.js"></script>
+  <script src="/admin/app/routes/add-edit-page/config.js"></script>
 
   <!-- @end ROUTES -->
 
   <!-- @begin COMPONENTS -->
 
-    <script src="/admin/app/components/index.js"></script>
+  <script src="/admin/app/components/index.js"></script>
 
-    <!-- adminLogin -->
-    <script src="/admin/app/components/adminLogin/controller.js"></script>
-    <script src="/admin/app/components/adminLogin/index.js"></script>
+  <!-- messageFlash -->
+  <script src="/admin/app/components/messageFlash/controller.js"></script>
+  <script src="/admin/app/components/messageFlash/index.js"></script>
 
-    <!-- messageFlash -->
-    <script src="/admin/app/components/messageFlash/controller.js"></script>
-    <script src="/admin/app/components/messageFlash/index.js"></script>
-
-    <!-- navBar -->
-    <script src="/admin/app/components/navBar/controller.js"></script>
-    <script src="/admin/app/components/navBar/index.js"></script>
+  <!-- navBar -->
+  <script src="/admin/app/components/navBar/controller.js"></script>
+  <script src="/admin/app/components/navBar/index.js"></script>
 
   <!-- @end COMPONENTS -->
 

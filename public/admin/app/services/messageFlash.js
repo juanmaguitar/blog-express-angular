@@ -10,7 +10,6 @@ angular.module('myApp.services')
       },
       setMessage: function (newMessage) {
         message = newMessage
-        console.log(`message: ${message}`)
         $rootScope.$broadcast('NEW_MESSAGE')
       }
     }

@@ -15,7 +15,7 @@
       AuthService.login(credentials)
         .then(res => {
           $cookies.put('loggedInUser', res.data)
-          $location.path('/admin/pages')
+          $location.path('/pages')
         })
         .catch(err => {
           flashMessageService.setMessage(err.data)

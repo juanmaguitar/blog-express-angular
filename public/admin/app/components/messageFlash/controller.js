@@ -3,7 +3,7 @@
 (function () {
   'use strict'
 
-  angular.module('myApp')
+  angular.module('myApp.components')
     .controller('MessageFlashCtrl', MessageFlashCtrl)
 
   function MessageFlashCtrl ($scope, flashMessageService, $timeout) {
@@ -18,5 +18,4 @@
   }
 
   MessageFlashCtrl.$inject = ['$scope', 'flashMessageService', '$timeout']
-
 })()

@@ -3,23 +3,21 @@
 (function () {
   'use strict'
 
-  angular.module('myApp')
+  angular.module('myApp.components')
     .controller('NavBarCtrl', NavBarCtrl)
 
-  NavBarCtrl.$inject = ['$scope', 'pagesFactory', '$location']
+  NavBarCtrl.$inject = ['$scope', '$cookies', 'AuthService', '$location', 'flashMessageService']
 
-  function NavBarCtrl ($scope, pagesFactory, $location) {
-    var path = $location.path().substr(0, 6)
-    if (path === '/admin') {
-      $scope.navLinks = [
-        { title: 'Pages', url: 'admin' },
-        { title: 'Site Settings', url: 'admin/site-settings' }
-      ]
-    } else {
-      pagesFactory.getPages()
-        .then(response => {
-          $scope.navLinks = response.data
+  function NavBarCtrl ($scope, $cookies, AuthService, $location, flashMessageService) {
+    $scope.loggedInUser = $cookies.get('loggedInUser')
+    $scope.logout = function () {
+      console.log("logout...")
+      AuthService.logout()
+        .then(function () {
+          $location.path('/admin/login')
+          flashMessageService.setMessage('Successfully logged out')
         })
+        .catch(() => console.log('there was an error tying to logout'))
     }
   }
 })()
