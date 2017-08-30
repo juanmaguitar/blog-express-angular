@@ -13,8 +13,9 @@ function handleLogin (req, res) {
         const matchPassword = bcrypt.compareSync(password, user.password)
         if (matchUsername && matchPassword) {
           req.session.regenerate(() => {
+            const { _id: id } = user
             req.session.user = username
-            return res.send(username)
+            return res.json({ username, id })
           })
         } else {
           return res.status(401).send('Bad Username or Password')

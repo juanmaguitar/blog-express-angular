@@ -1,8 +1,8 @@
 const Page = require('../../../../models/Post')
 
 function addPage (req, res) {
-  const { title, url, content, menuIndex } = req.body
-  const newPage = new Page({ title, url, content, menuIndex })
+  const { title, url, content, author } = req.body
+  const newPage = new Page({ title, url, content, author })
 
   newPage.save()
     .then(page => res.status(200).send(page))

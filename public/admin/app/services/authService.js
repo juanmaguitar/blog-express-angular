@@ -10,9 +10,11 @@
 
   function AuthService ($rootScope, $http, $cookies) {
     const loggedUser = (function () {
-      let loggedInUser = $cookies.get('loggedInUser')
+      const cookieLoggedUser = $cookies.get('loggedInUser')
+      let loggedInUser = cookieLoggedUser && JSON.parse(cookieLoggedUser)
       return {
-        get: () => loggedInUser,
+        getUsername: () => loggedInUser && loggedInUser.username,
+        getId: () => loggedInUser && loggedInUser.id,
         clear: () => { loggedInUser = null },
         add: (user) => { loggedInUser = user }
       }
@@ -22,8 +24,8 @@
       return $http.post('/api/login', credentials)
                 .then(res => res.data)
                 .then(loggedInUser => {
-                  loggedUser.add(loggedInUser)
-                  $cookies.put('loggedInUser', loggedInUser)
+                  loggedUser.add( loggedInUser )
+                  $cookies.put('loggedInUser', JSON.stringify(loggedInUser) )
                 })
     }
 

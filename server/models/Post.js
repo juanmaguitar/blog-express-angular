@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const { Schema } = mongoose
+const { ObjectId } = Schema
 
 const Page = new Schema({
   title: String,
@@ -8,7 +9,10 @@ const Page = new Schema({
     type: String,
     index: { unique: true }
   },
-  author: String,
+  author: {
+    type: ObjectId,
+    ref: 'adminUser'
+  },
   content: String,
   createdAt: {
     type: Date,

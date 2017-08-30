@@ -9,7 +9,7 @@
 
   function AdminPagesCtrl ($scope, $log, pagesFactory, AuthService, $location, $route) {
 
-    const loggedUser = AuthService.loggedUser.get()
+    const loggedUser = AuthService.loggedUser.getUsername()
     if (!loggedUser) $location.path('/login')
 
     pagesFactory.getPages()

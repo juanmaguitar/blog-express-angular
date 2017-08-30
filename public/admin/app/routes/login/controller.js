@@ -7,7 +7,7 @@
     .controller('LoginCtrl', LoginCtrl)
 
   function LoginCtrl ($scope, $location, $cookies, AuthService, $log, flashMessageService) {
-    const loggedUser = AuthService.loggedUser.get()
+    const loggedUser = AuthService.loggedUser.getUsername()
     if (loggedUser) $location.path('/pages')
 
     $scope.credentials = {
