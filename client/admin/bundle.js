@@ -35146,25 +35146,30 @@ angular.module("myCoolApp", [angularRoute])
 function configRouteAbout($routeProvider) {
   $routeProvider
     .when('/about', {
-      template: '<h1>About</h1>'
+      template: '<h1>About</h1>',
+      controller: function ($rootScope) {
+        console.log('About...')
+        console.log($rootScope.phrase)
+      }
     })
 }
 
 module.exports = configRouteAbout
 
-
-
 },{}],7:[function(require,module,exports){
 function configRouteContact($routeProvider) {
   $routeProvider
     .when('/contact', {
-      template: '<h1>Contact</h1>'
+      template: '<h1>Contact</h1>',
+      controller: function ($rootScope) {
+        console.log('Contact...')
+        console.log($rootScope.phrase)
+      }
+
     })
 }
 
 module.exports = configRouteContact
-
-
 
 },{}],8:[function(require,module,exports){
 function configRouteHome($routeProvider) {
@@ -35181,7 +35186,9 @@ module.exports = configRouteHome
 
 
 },{}],9:[function(require,module,exports){
-function HomeController() {
+function HomeController($rootScope) {
+  $rootScope.phrase = "Tu jemabef naradojo es sudze ocmusci tok uwuzepre pavpig ji unhotdef eco."
+  console.log("Home...")
   this.section = 'Home'
 }
 

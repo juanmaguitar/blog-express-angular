@@ -16,6 +16,8 @@
   "scripts": {
     "start": "node server/app",
     "dev": "nodemon server/app",
+    "build:js": "browserify src/js/app.js -o client/admin/bundle.js",
+    "build:js:watch": "watchify src/js/app.js -o client/admin/bundle.js -v",
     "build:scss": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css",
     "build:scss:watch": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css --watch"
   },
@@ -31,8 +33,10 @@
   "devDependencies": {
     "angular": "^1.6.6",
     "angular-route": "^1.6.6",
+    "browserify": "^14.4.0",
     "node-sass": "^4.5.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "watchify": "^3.9.0"
   },
   "main": "index.js"
 }
