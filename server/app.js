@@ -8,7 +8,7 @@ const moment = require('moment')
 
 const app = express()
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3002
 
 const bowerComponentsPath = path.join(__dirname, '../public/bower_components')
 const assetsPath = path.join(__dirname, '../public/assets')

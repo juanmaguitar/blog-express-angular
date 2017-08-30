@@ -1,17 +1,18 @@
 extends layout/index.pug
 
 block header
-  .row
-    .col-lg-8.col-md-10.mx-auto
-      .post-heading
-        h1= post.title
-        h2.subheading= post.subTitle
-        span.meta
-          | Posted by 
-          a(href='#')= post.author
-          |                 on #{post.createdAt}
-
-
+  header.masthead(style=styleHeader)
+    .container
+      .row
+        .col-lg-8.col-md-10.mx-auto
+          .post-heading
+            h1= post.title
+            h2.subheading= post.subTitle
+            span.meta
+              | Posted by 
+              a(href='#')= post.author.username
+              |                 on #{ moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}
+            
 block content
   .row
     .col-lg-8.col-md-10.mx-auto
