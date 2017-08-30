@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const moment = require('moment')
 
 const app = express()
 
@@ -30,7 +31,10 @@ marked.setOptions({
   smartLists: true,
   smartypants: false
 })
+
+app.locals.pretty = true
 app.locals.marked = marked
+app.locals.moment = moment
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

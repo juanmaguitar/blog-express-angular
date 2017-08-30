@@ -1,20 +1,18 @@
 extends layout/index.pug
 
 block header
-  header.masthead(style=`background-image: url('${post.bgImage}')`)
-    .container
-      .row
-        .col-lg-8.col-md-10.mx-auto
-          .post-heading
-            h1= post.title
-            h2.subheading= post.subTitle
-            span.meta
-              | Posted by 
-              a(href='#')= post.author
-              |                 on #{post.createdAt}
+  .row
+    .col-lg-8.col-md-10.mx-auto
+      .post-heading
+        h1= post.title
+        h2.subheading= post.subTitle
+        span.meta
+          | Posted by 
+          a(href='#')= post.author
+          |                 on #{post.createdAt}
 
 
 block content
-  article.row
+  .row
     .col-lg-8.col-md-10.mx-auto
-      != marked(post.bodyMarkup)
+      != marked(post.content)

@@ -1,11 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
+const Page = require('../../models/Post')
+
 router.get('/', (req, res) => {
   const section = 'home'
   const styleHeader = `background-image: url('img/home-bg.jpg')`
-  const posts = require('../../data/posts.json')
-  res.render('home.pug', { section, posts, styleHeader })
+  Page.find()
+    .populate('author')
+    .then(posts => {
+      console.log(posts[0])
+      res.render('home.pug', { section, posts, styleHeader })
+    })
+    .catch(err => res.status(500).send(err))
 })
 
 router.get('/about', (req, res) => {
@@ -24,11 +31,17 @@ router.get('/contact', (req, res) => {
   res.render('contact', { section, headerTitle, headerSubTitle, styleHeader })
 })
 
-router.get('/post', (req, res) => {
+router.get('/post/:url', (req, res) => {
+  const { url } = req.params
   const section = 'post'
-  const post = require('../../data/posts/4371598efb17446e90a48887a8e9cc45.json')
   const styleHeader = `background-image: url('img/post-bg.jpg')`
-  res.render('post', { section, post, styleHeader })
+  Page.findOne({ url })
+    .populate('author')
+    .then(post => {
+      res.render('post', { section, post, styleHeader })
+    })
+    .catch(err => res.status(500).send(err))
+
 })
 
 module.exports = router

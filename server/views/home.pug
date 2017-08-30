@@ -5,14 +5,14 @@ block content
     .col-lg-8.col-md-10.mx-auto
       each post in posts
         .post-preview
-          a(href='/post')
+          a(href='/post/'+post.url)
             h2.post-title= post.title
           if (post.subtitle)
             h3.post-subtitle= post.subtitle
           p.post-meta
             | Posted by 
-            a(href='#')= post.author
-            |               on #{post.createdAt}
+            a(href='#')= post.author.username
+            |               on #{ moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a')}
         hr
       // Pager
       .clearfix
