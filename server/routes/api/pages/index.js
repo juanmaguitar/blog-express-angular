@@ -18,7 +18,7 @@ router.get('/pages/details/:url', detailsByUrl)
 
 router.post('/pages/add', sessionCheck, addPage)
 router.post('/pages/update', sessionCheck, updatePage)
-router.get('/pages/delete/:id', sessionCheck, deletePage)
+router.delete('/pages/delete/:id', sessionCheck, deletePage)
 router.get('/pages/admin-details/:id', sessionCheck, detailsById)
 
 function sessionCheck (req, res, next) {

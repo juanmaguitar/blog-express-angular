@@ -18,8 +18,18 @@
 
   <div class="form-group">
     <label>Page Content</label>
-    <textarea ui-tinymce rows="15" class="form-control" type="text" ng-model="pageContent.content"></textarea>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Markdown</h5>
+        <textarea  markdown-editor="{'iconlibrary': 'fa', addExtraButtons: true}" ng-model="pageContent.content" name="editor1" rows="10"></textarea>
+      </div>
+      <div class="col-md-6">
+        <h5>Preview</h5>
+        <div marked="pageContent.content" class="markdown" style="padding: 20px"></div>
+      </div>
+    </div>
   </div>
+
   <input type="submit" class="btn btn-success" value="Save">
   </div>
 </form>

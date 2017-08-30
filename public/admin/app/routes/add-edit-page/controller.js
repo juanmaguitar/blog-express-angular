@@ -11,7 +11,7 @@
     const id = $routeParams.id
     $scope.pageContent = { id }
     $scope.heading = 'Add a New Page'
-    $scope.mode = (id === 0) ? 'add' : 'edit'
+    $scope.mode = (id === '0') ? 'add' : 'edit'
 
     if (id !== '0') {
       $scope.heading = 'Update Page'

@@ -48,7 +48,7 @@ app.use(express.static(bowerComponentsPath))
 app.use(express.static(assetsPath))
 app.use('/admin/', express.static(adminPath))
 
-app.use(require('./routes/pages/'))
+app.use(require('./routes/views/'))
 app.use('/api', require('./routes/api/pages/'))
 app.use('/api', require('./routes/api/auth/'))
 

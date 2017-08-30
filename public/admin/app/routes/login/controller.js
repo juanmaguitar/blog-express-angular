@@ -16,6 +16,7 @@
     }
 
     $scope.login = function (credentials) {
+      console.log('login!')
       AuthService.login(credentials)
         .then(() => $location.path('/pages'))
         .catch(err => {

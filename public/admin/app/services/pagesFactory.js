@@ -19,7 +19,7 @@ angular.module('myApp.services')
     }
 
     function deletePage (id) {
-      return $http.get('/api/pages/delete/' + id)
+      return $http.delete('/api/pages/delete/' + id)
     }
 
     function getDetailsPage (id) {

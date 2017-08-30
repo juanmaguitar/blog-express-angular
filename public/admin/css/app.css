@@ -73,11 +73,24 @@ body {
 }
 
 #add-page {
-  margin-bottom: 30px;
+  margin-bottom: 120px;
 }
 
 .menuLoggedContainer { position: relative }
 .menuLogged { position: absolute; right: 0 }
 .logout-item { display:flex; justify-content: space-between;}
-.logout-item .oi { top: 5px; }
+.logout-item .fa-power-off { margin-top: 5px; }
 .loginBox { justify-content: center; }
+
+
+markdown-editor {
+   border: 1px solid #ccc;
+   border-radius: 2px;
+}
+markdown-editor textarea {
+   font-family: monospace;
+}
+
+.table-pages {
+  margin-bottom: 110px;
+}
