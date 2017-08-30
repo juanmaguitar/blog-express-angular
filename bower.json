@@ -30,8 +30,10 @@
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
     "html5-boilerplate": "~4.3.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "4",
     "angular-cookies": "^1.6.6",
-    "angular-ui-tinymce": "^0.0.19"
+    "angular-ui-tinymce": "^0.0.19",
+    "popper.js": "https://unpkg.com/popper.js",
+    "open-iconic": "^1.1.1"
   }
 }

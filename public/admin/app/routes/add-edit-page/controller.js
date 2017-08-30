@@ -8,15 +8,16 @@
   AddEditPageCtrl.$inject = ['$scope', '$log', 'pagesFactory', '$routeParams', '$location', 'flashMessageService', '$filter']
 
   function AddEditPageCtrl ($scope, $log, pagesFactory, $routeParams, $location, flashMessageService, $filter) {
-    const id = +$routeParams.id
+    const id = $routeParams.id
+    $scope.pageContent = { id }
     $scope.heading = 'Add a New Page'
     $scope.mode = (id === 0) ? 'add' : 'edit'
 
-    if (id !== 0) {
+    if (id !== '0') {
       $scope.heading = 'Update Page'
       pagesFactory.getDetailsPage(id)
         .then(detailsPage => {
-          $scope.pageContent = detailsPage
+          Object.assign($scope.pageContent, detailsPage)
           $log.info($scope.pageContent)
         })
         .catch(err => $log.error(err))

@@ -1,4 +1,25 @@
 <div ng-if=loggedUser()>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/admin">Blog CMS Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse menuLoggedContainer" id="navbarNavDropdown">
+        <ul class="navbar-nav menuLogged">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Logged as {{loggedUser()}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item logout-item" href="#" ng-click="logout()"><span>Logout</span> <span class="oi oi-account-logout"></span></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!--
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -22,4 +43,5 @@
       </ul>
     </div>
   </nav>
+-->
 </div>

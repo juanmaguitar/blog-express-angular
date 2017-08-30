@@ -18,6 +18,7 @@
 
     $scope.deletePage = function (id) {
       pagesFactory.deletePage(id)
+        .then(() => $location.path('/pages'))
     }
   }
 })()

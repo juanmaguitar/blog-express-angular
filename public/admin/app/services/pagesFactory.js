@@ -9,9 +9,9 @@ angular.module('myApp.services')
     }
 
     function savePage (pageData) {
-      var id = pageData._id
+      var id = pageData.id
 
-      if (id === 0) {
+      if (id === '0') {
         return $http.post('/api/pages/add', pageData)
       } else {
         return $http.post('/api/pages/update', pageData)

@@ -51,6 +51,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -74,3 +75,9 @@ body {
 #add-page {
   margin-bottom: 30px;
 }
+
+.menuLoggedContainer { position: relative }
+.menuLogged { position: absolute; right: 0 }
+.logout-item { display:flex; justify-content: space-between;}
+.logout-item .oi { top: 5px; }
+.loginBox { justify-content: center; }
