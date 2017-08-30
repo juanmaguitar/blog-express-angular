@@ -29,16 +29,9 @@
   padding: 0;
 }
 
-admin-login {
-  padding:20px 0;
-  border-bottom: 1px solid #ccc;
-}
-
 header {
   padding-bottom: 20px;
   margin-bottom: 50px;
-  border-bottom: 1px solid #ccc;
-  text-align: right;
 }
 
 footer {
@@ -76,4 +69,8 @@ body {
 .disabled {
   text-decoration: line-through;
   color: #eee;
+}
+
+#add-page {
+  margin-bottom: 30px;
 }

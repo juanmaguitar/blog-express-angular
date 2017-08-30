@@ -5,8 +5,8 @@ function addPage (req, res) {
   const newPage = new Page({ title, url, content, menuIndex })
 
   newPage.save()
-    .then(page => res.send(200, page))
-    .catch(err => res.send(500, err))
+    .then(page => res.status(200).send(page))
+    .catch(err => res.status(500).send(err))
 }
 
 module.exports = addPage

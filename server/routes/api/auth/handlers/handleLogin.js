@@ -7,7 +7,7 @@ function handleLogin (req, res) {
   AdminUser.findOne({ username: username })
     .then(user => {
       if (user === null) {
-        return res.send(401, 'User Doesn\'t exist')
+        return res.status(401).send('User Doesn\'t exist')
       } else {
         const matchUsername = (username === user.username)
         const matchPassword = bcrypt.compareSync(password, user.password)
@@ -17,7 +17,7 @@ function handleLogin (req, res) {
             return res.send(username)
           })
         } else {
-          return res.send(401, 'Bad Username or Password')
+          return res.status(401).send('Bad Username or Password')
         }
       }
     })

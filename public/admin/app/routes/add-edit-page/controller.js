@@ -11,17 +11,14 @@
     $scope.pageContent = {}
     $scope.pageContent._id = $routeParams.id
     $scope.heading = 'Add a New Page'
-
     if ($scope.pageContent._id !== 0) {
       $scope.heading = 'Update Page'
-      pagesFactory.getAdminPageContent($scope.pageContent._id).then(
-              function (response) {
-                $scope.pageContent = response.data
-                $log.info($scope.pageContent)
-              },
-              function (err) {
-                $log.error(err)
-              })
+      pagesFactory.getAdminPageContent($scope.pageContent._id)
+        .then(res => {
+          $scope.pageContent = res.data
+          $log.info($scope.pageContent)
+        })
+        .catch(err => $log.error(err))
     }
 
     $scope.updateURL = function () {
@@ -32,7 +29,7 @@
       pagesFactory.savePage($scope.pageContent).then(
             function () {
               flashMessageService.setMessage('Page Saved Successfully')
-              $location.path('/admin/pages')
+              $location.path('/pages')
             },
             function () {
               $log.error('error saving data')

@@ -9,13 +9,13 @@
   NavBarCtrl.$inject = ['$scope', '$cookies', 'AuthService', '$location', 'flashMessageService']
 
   function NavBarCtrl ($scope, $cookies, AuthService, $location, flashMessageService) {
-    $scope.loggedInUser = $cookies.get('loggedInUser')
+    $scope.loggedUser = () => AuthService.loggedUser.get()
+    console.log(  $scope.loggedUser() )
     $scope.logout = function () {
-      console.log("logout...")
       AuthService.logout()
         .then(function () {
-          $location.path('/admin/login')
           flashMessageService.setMessage('Successfully logged out')
+          $location.path('/login')
         })
         .catch(() => console.log('there was an error tying to logout'))
     }

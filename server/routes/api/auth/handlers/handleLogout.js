@@ -1,5 +1,5 @@
 function handleLogout (req, res) {
-  req.session.destroy(() => res.send(200, 'User logged out'))
+  req.session.destroy(() => res.status(200).send('User logged out'))
 }
 
 module.exports = handleLogout

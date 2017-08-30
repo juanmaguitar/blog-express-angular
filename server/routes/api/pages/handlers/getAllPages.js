@@ -2,8 +2,8 @@ const Page = require('../../../../models/Post')
 
 function getAllPages (req, res) {
   Page.find()
-    .then(pages => res.json(pages))
-    .catch(err => res.send(500, err))
+    .then(pages => res.status(200).json(pages))
+    .catch(err => res.status(500).send(err))
 }
 
 module.exports = getAllPages
