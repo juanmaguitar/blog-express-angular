@@ -10,7 +10,6 @@ const Page = new Schema({
   },
   author: String,
   content: String,
-  menuIndex: Number,
   createdAt: {
     type: Date,
     default: new Date()

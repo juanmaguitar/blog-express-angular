@@ -5,7 +5,7 @@ angular.module('myApp.services')
   .factory('pagesFactory', ['$http', function ($http) {
     function getPages () {
       return $http.get('/api/pages')
-              .then(response => response.data)
+              .then(res => res.data)
     }
 
     function savePage (pageData) {
@@ -22,14 +22,11 @@ angular.module('myApp.services')
       return $http.get('/api/pages/delete/' + id)
     }
 
-    function getAdminPageContent (id) {
+    function getDetailsPage (id) {
       return $http.get('/api/pages/admin-details/' + id)
+                .then(res => res.data)
     }
 
-    function getPageContent (url) {
-      return $http.get('/api/pages/details/' + url)
-    }
-
-    return { getPages, savePage, deletePage, getAdminPageContent, getPageContent }
+    return { getPages, savePage, deletePage, getDetailsPage }
 
   }])

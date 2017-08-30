@@ -8,14 +8,15 @@
   AddEditPageCtrl.$inject = ['$scope', '$log', 'pagesFactory', '$routeParams', '$location', 'flashMessageService', '$filter']
 
   function AddEditPageCtrl ($scope, $log, pagesFactory, $routeParams, $location, flashMessageService, $filter) {
-    $scope.pageContent = {}
-    $scope.pageContent._id = $routeParams.id
+    const id = +$routeParams.id
     $scope.heading = 'Add a New Page'
-    if ($scope.pageContent._id !== 0) {
+    $scope.mode = (id === 0) ? 'add' : 'edit'
+
+    if (id !== 0) {
       $scope.heading = 'Update Page'
-      pagesFactory.getAdminPageContent($scope.pageContent._id)
-        .then(res => {
-          $scope.pageContent = res.data
+      pagesFactory.getDetailsPage(id)
+        .then(detailsPage => {
+          $scope.pageContent = detailsPage
           $log.info($scope.pageContent)
         })
         .catch(err => $log.error(err))
@@ -26,15 +27,13 @@
     }
 
     $scope.savePage = function () {
-      pagesFactory.savePage($scope.pageContent).then(
-            function () {
-              flashMessageService.setMessage('Page Saved Successfully')
-              $location.path('/pages')
-            },
-            function () {
-              $log.error('error saving data')
-            }
-          )
+      pagesFactory
+        .savePage($scope.pageContent)
+        .then(() => {
+          flashMessageService.setMessage('Page Saved Successfully')
+          $location.path('/pages')
+        })
+        .catch(() => $log.error('error saving data'))
     }
   }
 })()

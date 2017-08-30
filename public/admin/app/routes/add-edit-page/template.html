@@ -2,7 +2,7 @@
 <hr/>
 
 <form role="form" id="add-page" ng-submit="savePage()">
-  <div class="form-group">
+  <div ng-if="mode === 'edit'" class="form-group">
     <label>Page ID</label>
     <input class="form-control" type="text" readonly ng-model="pageContent._id" />
   </div>
@@ -14,11 +14,6 @@
   <div class="form-group">
     <label>Page URL Alias</label>
     <input class="form-control" type="text" readonly ng-model="pageContent.url" />
-  </div>
-
-  <div class="form-group">
-    <label>Menu Index</label>
-    <input class="form-control" type="number" ng-model="pageContent.menuIndex" />
   </div>
 
   <div class="form-group">

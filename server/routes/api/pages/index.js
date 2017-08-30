@@ -21,9 +21,9 @@ router.post('/pages/update', sessionCheck, updatePage)
 router.get('/pages/delete/:id', sessionCheck, deletePage)
 router.get('/pages/admin-details/:id', sessionCheck, detailsById)
 
-function sessionCheck (request, response, next) {
-  if (request.session.user) next()
-  else response.send(401, 'authorization failed')
+function sessionCheck (req, res, next) {
+  if (req.cookies.loggedInUser) next()
+  else res.send(401, 'authorization failed')
 }
 
 module.exports = router
