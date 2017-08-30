@@ -1,49 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const Page = require('../../models/Post')
+const showHome = require('./handlers/showHome')
+const showAbout = require('./handlers/showAbout')
+const showContact = require('./handlers/showContact')
+const showPost = require('./handlers/showPost')
 
-router.get('/', (req, res) => {
-  const section = 'home'
-  const styleHeader = `background-image: url('/img/home-bg.jpg')`
-  Page.find()
-    .populate('author')
-    .then(posts => {
-      console.log(posts[0])
-      res.render('home.pug', { section, posts, styleHeader })
-    })
-    .catch(err => res.status(500).send(err))
-})
-
-router.get('/about', (req, res) => {
-  const section = 'about'
-  const styleHeader = `background-image: url('/img/about-bg.jpg')`
-  const headerTitle = 'About Me'
-  const headerSubTitle = 'This is what I do.'
-  res.render('about', { section, headerTitle, headerSubTitle, styleHeader })
-})
-
-router.get('/contact', (req, res) => {
-  const section = 'contact'
-  const styleHeader = `background-image: url('/img/contact-bg.jpg')`
-  const headerTitle = 'Contact Me'
-  const headerSubTitle = 'Have questions? I have answers (maybe).'
-  res.render('contact', { section, headerTitle, headerSubTitle, styleHeader })
-})
-
-router.get('/post/:url', (req, res) => {
-  const { url } = req.params
-  const section = 'post'
-  const styleHeader = `background-image: url('/img/contact-bg.jpg')`
-  const headerTitle = 'Contact Me'
-  const headerSubTitle = 'Have questions? I have answers (maybe).'
-  Page.findOne({ url })
-    .populate('author')
-    .then(post => {
-      res.render('post', { section, post, headerTitle, headerSubTitle, styleHeader })
-    })
-    .catch(err => res.status(500).send(err))
-
-})
+router.get('/', showHome)
+router.get('/about', showAbout)
+router.get('/contact', showContact)
+router.get('/post/:url', showPost)
 
 module.exports = router
