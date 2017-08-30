@@ -94,3 +94,8 @@ markdown-editor textarea {
 .table-pages {
   margin-bottom: 110px;
 }
+
+.markdown.preview {
+  border: 1px solid #eee;
+  overflow: hidden;
+}

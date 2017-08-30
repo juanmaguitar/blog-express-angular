@@ -4,7 +4,7 @@
 <table class="table table-pages">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Author</th>
       <th>Title</th>
       <th>URL</th>
       <th>Edit</th>
@@ -13,7 +13,7 @@
   </thead>
 
   <tr ng-repeat="page in allPages">
-    <td>{{page._id}}</td>
+    <td>{{page.author.username}}</td>
     <td>{{page.title}}</td>
     <td>{{page.url}}</td>
     <td> <a ng-href="admin/#!/add-edit-page/{{page._id}}">Edit</a>

@@ -2,6 +2,7 @@ const Page = require('../../../../models/Post')
 
 function getAllPages (req, res) {
   Page.find()
+    .populate('author')
     .then(pages => res.status(200).json(pages))
     .catch(err => res.status(500).send(err))
 }
