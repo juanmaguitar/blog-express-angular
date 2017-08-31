@@ -8,8 +8,8 @@
   AdminPagesCtrl.$inject = ['$scope', '$log', 'ApiService', 'AuthService', '$location', '$route']
 
   function AdminPagesCtrl ($scope, $log, ApiService, AuthService, $location, $route) {
-    const loggedUser = AuthService.loggedUser.getUsername()
-    if (!loggedUser) $location.path('/login')
+    // const loggedUser = AuthService.loggedUser.getUsername()
+    // if (!loggedUser) $location.path('/login')
 
     ApiService.getPages()
       .then(pages => { $scope.allPages = pages })
