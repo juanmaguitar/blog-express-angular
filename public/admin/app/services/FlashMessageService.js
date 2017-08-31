@@ -4,11 +4,11 @@
   'use strict'
 
   angular.module('myApp.services')
-    .factory('flashMessageService', flashMessageService)
+    .factory('FlashMessageService', FlashMessageService)
 
-  flashMessageService.$inject = ['$rootScope']
+  FlashMessageService.$inject = ['$rootScope']
 
-  function flashMessageService ($rootScope) {
+  function FlashMessageService ($rootScope) {
     var message = ''
 
     function getMessage () {

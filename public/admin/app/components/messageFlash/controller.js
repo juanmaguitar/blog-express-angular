@@ -6,9 +6,9 @@
   angular.module('myApp.components')
     .controller('MessageFlashCtrl', MessageFlashCtrl)
 
-  function MessageFlashCtrl ($scope, flashMessageService, $timeout) {
+  function MessageFlashCtrl ($scope, FlashMessageService, $timeout) {
     $scope.$on('NEW_MESSAGE', function () {
-      $scope.message = flashMessageService.getMessage()
+      $scope.message = FlashMessageService.getMessage()
       $scope.isVisible = true
       return $timeout(() => {
         $scope.isVisible = false
@@ -17,5 +17,5 @@
     })
   }
 
-  MessageFlashCtrl.$inject = ['$scope', 'flashMessageService', '$timeout']
+  MessageFlashCtrl.$inject = ['$scope', 'FlashMessageService', '$timeout']
 })()

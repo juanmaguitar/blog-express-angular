@@ -1,1 +1,1 @@
-angular.module('myApp.services', [])
+angular.module('myApp.services', [ 'angular-jwt' ])

@@ -13,7 +13,7 @@ angular.module('myApp',
     'ngCookies'
   ])
   .config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.interceptors.push('myHttpInterceptor')
+    $httpProvider.interceptors.push('AuthInterceptor')
   }])
   .config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {

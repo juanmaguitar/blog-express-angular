@@ -2,7 +2,7 @@
 'use strict'
 
 angular.module('myApp.services')
-  .factory('pagesFactory', ['$http', function ($http) {
+  .factory('ApiService', ['$http', function ($http) {
     function getPages () {
       return $http.get('/api/pages')
               .then(res => res.data)
@@ -28,5 +28,4 @@ angular.module('myApp.services')
     }
 
     return { getPages, savePage, deletePage, getDetailsPage }
-
   }])
