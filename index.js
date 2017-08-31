@@ -1,7 +1,7 @@
 const path = require('path')
-require('dotenv').load()
 
-global.__base = path.join(__dirname, '/server/')
+global.__base = path.join(__dirname, 'server')
+require('dotenv').load()
 
 const app = require('./server/app')
 const db = require('./server/config/db')
@@ -9,7 +9,7 @@ const db = require('./server/config/db')
 const DB_URI = process.env.DB_URI
 const PORT = process.env.PORT
 
-console.log(`connecting to ${DB_URI}...`)
+console.log(`🌀 Connecting to ${DB_URI}`)
 
-db.open(DB_URI)
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))
+db.openUri(DB_URI)
+app.listen(PORT, () => console.log(`🔥 Listening on PORT ${PORT}...`))
