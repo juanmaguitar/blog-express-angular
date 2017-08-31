@@ -11,7 +11,7 @@ const Page = new Schema({
   },
   author: {
     type: ObjectId,
-    ref: 'adminUser'
+    ref: 'User'
   },
   content: String,
   createdAt: {

@@ -17,7 +17,9 @@
     "start": "node index",
     "dev": "nodemon index",
     "build:scss": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css",
-    "build:scss:watch": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css --watch"
+    "build:scss:watch": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css --watch",
+    "lint:md": "remark README.md",
+    "hook:standard": "./hooks/standard.sh"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -32,13 +34,27 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
-    "pug": "^2.0.0-rc.3"
+    "pug": "^2.0.0-rc.3",
+    "remark-lint": "^6.0.1"
   },
   "devDependencies": {
     "angular": "^1.6.6",
     "angular-route": "^1.6.6",
     "node-sass": "^4.5.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "pre-commit": "^1.2.2"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "pre-commit": [ "hook:standard" ],
+  "standard": {
+    "globals": [
+      "__base",
+      "angular"
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
+  }
 }

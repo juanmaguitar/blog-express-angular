@@ -1,55 +1,51 @@
 const express = require('express')
 const path = require('path')
-const bodyParser = require('body-parser')
-const moment = require('moment')
-
-const passport = require('./config/passport')
-
-const AuthRoutes = require('./routes/auth/')
-const privateRoutes = require('./routes/private')
-const viewsRoutes = require('./routes/views/')
-const apiPagesRoutes = require('./routes/api/pages/')
-
-const bowerComponentsPath = path.join(__dirname, '../public/bower_components')
-const assetsPath = path.join(__dirname, '../public/assets')
-const adminPath = path.join(__dirname, '../public/admin')
-
-const viewsPath = path.join(__dirname, 'views')
-
-const marked = require('marked')
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false
-})
 
 const app = express()
 
 app.locals.pretty = true
+
+/* marked */
+const marked = require('./config/marked')
 app.locals.marked = marked
+
+/* moment */
+const moment = require('moment')
 app.locals.moment = moment
 
+/* bodyParser */
+const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+/* passport */
+const passport = require('./config/passport')
 app.use(passport.initialize())
 
 app.set('view engine', 'pug')
+
+const viewsPath = path.join(__dirname, 'views')
 app.set('views', viewsPath)
+
+/* public paths  */
+const bowerComponentsPath = path.join(__dirname, '../public/bower_components')
+const assetsPath = path.join(__dirname, '../public/assets')
+const adminPath = path.join(__dirname, '../public/admin')
 
 app.use(express.static(bowerComponentsPath))
 app.use(express.static(assetsPath))
 app.use('/admin/', express.static(adminPath))
 
+/* routers  */
+const authRoutes = require('./routes/auth/')
+const privateRoutes = require('./routes/private')
+const viewsRoutes = require('./routes/views/')
+const apiPagesRoutes = require('./routes/api/pages/')
+
 app.use(viewsRoutes)
+app.use('/admin', authRoutes)
 app.use('/private', privateRoutes)
 app.use('/api', apiPagesRoutes)
-app.use('/api', apiAuthRoutes)
 
 // app.get('/admin/*', function (request, response) {
 //   response.sendfile('../public/admin/index.html')

@@ -9,7 +9,6 @@
   NavBarCtrl.$inject = ['$scope', '$cookies', 'AuthService', '$location', 'flashMessageService']
 
   function NavBarCtrl ($scope, $cookies, AuthService, $location, flashMessageService) {
-    $scope.loggedUser = () => AuthService.loggedUser.getUsername()
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {

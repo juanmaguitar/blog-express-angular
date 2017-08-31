@@ -1,7 +1,7 @@
-const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
+const path = require('path')
+const { Strategy, ExtractJwt } = require('passport-jwt')
 
-const User = require(__base + 'models/User')
+const User = require(path.join(__base, 'models/User'))
 const SECRET = process.env.SECRET
 
 const jwtOptions = {
@@ -9,14 +9,13 @@ const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeader()
 }
 
-const strategy = new JwtStrategy( jwtOptions, (jwt_payload, done) => {
-
-  User.findById( jwt_payload.id )
+const strategy = new Strategy(jwtOptions, (jwtPayload, done) => {
+  User.findById(jwtPayload.id)
     .then(user => {
-      if (user) done(null, user);
-      else done(null, false);
+      if (user) done(null, user)
+      else done(null, false)
     })
-    .catch(err => done(err, false) )
+    .catch(err => done(err, false))
 })
 
 module.exports = strategy

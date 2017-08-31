@@ -1,7 +1,8 @@
 const express = require('express')
+const path = require('path')
 const router = express.Router()
 
-const passport = require(__base + 'config/passport')
+const passport = require(path.join(__base, 'config/passport'))
 const registerUser = require('./handlers/registerUser')
 const loginUser = require('./handlers/loginUser')
 

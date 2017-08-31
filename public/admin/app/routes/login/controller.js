@@ -6,9 +6,8 @@
   angular.module('myApp')
     .controller('LoginCtrl', LoginCtrl)
 
-  function LoginCtrl ($scope, $location, $cookies, AuthService, $log, flashMessageService) {
-    const loggedUser = AuthService.loggedUser.getUsername()
-    if (loggedUser) $location.path('/pages')
+  function LoginCtrl ($scope, $rootScope, $location, $cookies, AuthService, $log, flashMessageService) {
+    if ($rootScope.loggedUser) $location.path('/pages')
 
     $scope.credentials = {
       username: '',
@@ -16,9 +15,13 @@
     }
 
     $scope.login = function (credentials) {
-      console.log('login!')
+//      console.log('login!')
       AuthService.login(credentials)
-        .then(() => $location.path('/pages'))
+        .then(res => {
+          console.log(res)
+          // if (response.status === 401) {
+          // $location.path('/pages')
+        })
         .catch(err => {
           flashMessageService.setMessage(err.data)
           $log.log(err)
@@ -26,5 +29,5 @@
     }
   }
 
-  LoginCtrl.$inject = ['$scope', '$location', '$cookies', 'AuthService', '$log', 'flashMessageService']
+  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', '$cookies', 'AuthService', '$log', 'flashMessageService']
 })()

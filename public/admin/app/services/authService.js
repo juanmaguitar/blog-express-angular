@@ -6,37 +6,41 @@
   angular.module('myApp.services')
     .factory('AuthService', AuthService)
 
-  AuthService.$inject = ['$rootScope', '$http', '$cookies']
+  AuthService.$inject = ['$http', '$rootScope', 'StorageService', 'jwtHelper']
 
-  function AuthService ($rootScope, $http, $cookies) {
-    const loggedUser = (function () {
-      const cookieLoggedUser = $cookies.get('loggedInUser')
-      let loggedInUser = cookieLoggedUser && JSON.parse(cookieLoggedUser)
-      return {
-        getUsername: () => loggedInUser && loggedInUser.username,
-        getId: () => loggedInUser && loggedInUser.id,
-        clear: () => { loggedInUser = null },
-        add: (user) => { loggedInUser = user }
-      }
-    })()
+  function AuthService ($http, $rootScope, StorageService, jwtHelper) {
+    function login (username, password) {
+      return $http.post('/login', { username, password })
+          .then(response => response.data)
+          .then(data => {
+            StorageService.setToken(data.token)
+            setCredentials(data.token)
+            return data
+          })
+    }
 
-    function login (credentials) {
-      return $http.post('/api/login', credentials)
-                .then(res => res.data)
-                .then(loggedInUser => {
-                  loggedUser.add( loggedInUser )
-                  $cookies.put('loggedInUser', JSON.stringify(loggedInUser) )
-                })
+    function register (username, password) {
+      return $http.post('/register', { username, password })
+          .then(response => response.data)
+    }
+
+    function isLoggedIn () {
+      const token = StorageService.getToken()
+      if (!token) return false
+      return true
     }
 
     function logout () {
-      return $http.get('/api/logout')
-                .then(() => {
-                  loggedUser.clear()
-                  $cookies.remove('loggedInUser')
-                })
+      console.log('logouting...')
+      StorageService.removeToken()
+      delete $rootScope.loggedUser
     }
 
-    return { login, logout, loggedUser }
+    function setCredentials (token) {
+      var tokenPayload = jwtHelper.decodeToken(token)
+      $rootScope.loggedUser = tokenPayload.username
+    }
+
+    return { login, register, isLoggedIn, logout, setCredentials }
   }
 })()

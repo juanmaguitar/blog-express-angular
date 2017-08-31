@@ -1,4 +1,5 @@
-const User = require(__base + 'models/User')
+const path = require('path')
+const User = require(path.join(__base, 'models/User'))
 
 function registerUser (req, res) {
   const { username, password } = req.body
