@@ -6,6 +6,7 @@ angular.module('myApp')
     $routeProvider
       .when('/add-edit-page/:id', {
         templateUrl: '/admin/app/routes/add-edit-page/template.html',
-        controller: 'AddEditPageCtrl'
+        controller: 'AddEditPageCtrl',
+        secure: true
       })
   }])

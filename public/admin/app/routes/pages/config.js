@@ -6,6 +6,7 @@ angular.module('myApp')
     $routeProvider
       .when('/pages', {
         templateUrl: '/admin/app/routes/pages/template.html',
-        controller: 'AdminPagesCtrl'
+        controller: 'AdminPagesCtrl',
+        secure: true
       })
   }])
