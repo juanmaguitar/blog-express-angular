@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Angular CMS</title>
-  <base href="/">
+  <!-- <base href="/admin"/> -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/bootstrap-markdown/css/bootstrap-markdown.min.css">
@@ -33,7 +33,6 @@
 
   <script src="/angular/angular.js"></script>
   <script src="/angular-route/angular-route.js"></script>
-  <script src="/angular-cookies/angular-cookies.js"></script>
   <script src="/angular-sanitize/angular-sanitize.js"></script>
   <script src="/angular-marked/dist/angular-marked.min.js"></script>
   <script src="/angular-highlightjs/build/angular-highlightjs.min.js"></script>
@@ -42,17 +41,19 @@
 
   <script src="/bootstrap-markdown/locale/bootstrap-markdown.es.js"></script>
 
-  <!-- <script src="/tinymce/tinymce.min.js"></script>
-  <script src="/angular-ui-tinymce/src/tinymce.js"></script> -->
-
   <!-- GENERAL -->
   <script src="/admin/app/app.js"></script>
 
+  <!-- CONFIG -->
+  <script src="/admin/app/config/addInterceptor.js"></script>
+  <script src="/admin/app/config/markedSettings.js"></script>
+  <script src="/admin/app/config/setRouteDefaults.js"></script>
+
+  <!-- FILTERS -->
   <script src="/admin/app/filters/index.js"></script>
 
   <!-- SERVICES -->
-  <script src="/admin/app/services/index.js"></script>
-
+  <script src="/admin/app/services/_index.js"></script>
   <script src="/admin/app/services/StorageService.js"></script>
   <script src="/admin/app/services/ApiService.js"></script>
   <script src="/admin/app/services/AuthService.js"></script>
@@ -62,16 +63,16 @@
   <!-- @begin ROUTES -->
 
   <!-- /pages -->
-  <script src="/admin/app/routes/pages/controller.js"></script>
-  <script src="/admin/app/routes/pages/config.js"></script>
+  <script src="/admin/app/routes/home/controller.js"></script>
+  <script src="/admin/app/routes/home/config.js"></script>
 
   <!-- /login -->
   <script src="/admin/app/routes/login/controller.js"></script>
   <script src="/admin/app/routes/login/config.js"></script>
 
-  <!-- /add-edit-page -->
-  <script src="/admin/app/routes/add-edit-page/controller.js"></script>
-  <script src="/admin/app/routes/add-edit-page/config.js"></script>
+  <!-- /add-edit-post -->
+  <script src="/admin/app/routes/add-edit-post/controller.js"></script>
+  <script src="/admin/app/routes/add-edit-post/config.js"></script>
 
   <!-- @end ROUTES -->
 

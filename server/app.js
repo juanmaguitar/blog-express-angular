@@ -36,17 +36,17 @@ app.use(express.static(bowerComponentsPath))
 app.use(express.static(assetsPath))
 app.use('/admin/', express.static(adminPath))
 
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin/index.html'))
+})
+
 /* routers  */
 const authRoutes = require('./routes/auth/')
 const viewsRoutes = require('./routes/views/')
-const apiPagesRoutes = require('./routes/api/pages/')
+const apiPagesRoutes = require('./routes/api/')
 
 app.use(viewsRoutes)
 app.use('/admin', authRoutes)
 app.use('/api', passport.authenticate('jwt', { session: false }), apiPagesRoutes)
-
-// app.get('/admin/*', function (request, response) {
-//   response.sendfile('../public/admin/index.html')
-// })
 
 module.exports = app

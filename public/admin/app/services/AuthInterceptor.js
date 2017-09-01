@@ -1,12 +1,8 @@
-/* global angular */
-
 (function () {
   'use strict'
 
   angular.module('myApp.services')
     .factory('AuthInterceptor', AuthInterceptor)
-
-  AuthInterceptor.$inject = ['StorageService']
 
   function AuthInterceptor (StorageService) {
     function addToken (config) {
@@ -22,4 +18,6 @@
       request: addToken
     }
   }
+
+  AuthInterceptor.$inject = ['StorageService']
 })()

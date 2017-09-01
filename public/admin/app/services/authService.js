@@ -1,12 +1,8 @@
-/* global angular */
-
 (function () {
   'use strict'
 
   angular.module('myApp.services')
     .factory('AuthService', AuthService)
-
-  AuthService.$inject = ['$http', '$rootScope', 'StorageService', 'jwtHelper', '$q']
 
   function AuthService ($http, $rootScope, StorageService, jwtHelper, $q) {
     function login ({username, password}) {
@@ -46,4 +42,6 @@
 
     return { login, register, isLoggedIn, logout, setCredentials }
   }
+
+  AuthService.$inject = ['$http', '$rootScope', 'StorageService', 'jwtHelper', '$q']
 })()

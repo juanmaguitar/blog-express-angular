@@ -1,0 +1,24 @@
+<h1 class="text-center">Posts List</h1>
+<p><a href="#!/add-edit-post/0" class="btn btn-success"> Add New Page</a></p>
+<hr/>
+<table class="table table-pages">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>URL</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tr ng-repeat="post in posts">
+    <td>{{post.author.username}}</td>
+    <td>{{post.title}}</td>
+    <td>{{post.url}}</td>
+    <td> <a ng-href="admin/#!/add-edit-post/{{post._id}}">Edit</a>
+    </td>
+    <td> <a ng-href="#" ng-click="deletePost($event, post._id)">Delete</a>
+    </td>
+  </tr>
+</table>

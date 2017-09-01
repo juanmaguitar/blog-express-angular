@@ -1,13 +1,11 @@
-/* global angular */
-
 (function () {
   'use strict'
 
   angular.module('myApp')
     .controller('LoginCtrl', LoginCtrl)
 
-  function LoginCtrl ($scope, $rootScope, $location, $cookies, AuthService, $log, FlashMessageService) {
-    if ($rootScope.loggedUser) $location.path('/pages')
+  function LoginCtrl ($scope, $rootScope, $location, AuthService, $log, FlashMessageService) {
+    if (!AuthService.isLoggedIn()) $location.path('/')
 
     $scope.credentials = {
       username: '',
@@ -17,7 +15,7 @@
     $scope.login = function (credentials) {
       AuthService.login(credentials)
         .then(res => {
-          $location.path('/pages')
+          $location.path('/')
         })
         .catch(err => {
           FlashMessageService.setMessage(err.data)
@@ -26,5 +24,5 @@
     }
   }
 
-  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', '$cookies', 'AuthService', '$log', 'FlashMessageService']
+  LoginCtrl.$inject = ['$scope', '$rootScope', '$location', 'AuthService', '$log', 'FlashMessageService']
 })()

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 const { ObjectId } = Schema
 
-const Page = new Schema({
+const Post = new Schema({
   title: String,
   subtitle: String,
   url: {
@@ -20,4 +20,4 @@ const Page = new Schema({
   }
 })
 
-module.exports = mongoose.model('Page', Page)
+module.exports = mongoose.model('Post', Post)

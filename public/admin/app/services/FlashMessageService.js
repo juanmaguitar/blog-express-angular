@@ -1,12 +1,8 @@
-/* global angular */
-
 (function () {
   'use strict'
 
   angular.module('myApp.services')
     .factory('FlashMessageService', FlashMessageService)
-
-  FlashMessageService.$inject = ['$rootScope']
 
   function FlashMessageService ($rootScope) {
     var message = ''
@@ -21,4 +17,6 @@
     }
     return { getMessage, setMessage }
   }
+
+  FlashMessageService.$inject = ['$rootScope']
 })()

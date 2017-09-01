@@ -5,9 +5,10 @@
 
   function configRoute ($routeProvider) {
     $routeProvider
-      .when('/login', {
-        templateUrl: '/admin/app/routes/login/template.html',
-        controller: 'LoginCtrl'
+      .when('/', {
+        templateUrl: '/admin/app/routes/home/template.html',
+        controller: 'HomeCtrl',
+        secure: true
       })
   }
 

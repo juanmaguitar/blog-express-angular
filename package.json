@@ -26,6 +26,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "express-jwt": "^5.3.0",
+    "include": "^1.1.0",
     "jsonwebtoken": "^7.4.1",
     "marked": "^0.3.6",
     "moment": "^2.18.1",
@@ -45,10 +46,12 @@
     "pre-commit": "^1.2.2"
   },
   "main": "index.js",
-  "pre-commit": [ "hook:standard" ],
+  "pre-commit": [
+    "hook:standard"
+  ],
   "standard": {
     "globals": [
-      "__base",
+      "__require",
       "angular"
     ]
   },

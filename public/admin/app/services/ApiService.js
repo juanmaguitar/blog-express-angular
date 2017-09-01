@@ -1,31 +1,35 @@
-/* global angular */
-'use strict'
+(function () {
+  'use strict'
 
-angular.module('myApp.services')
-  .factory('ApiService', ['$http', function ($http) {
-    function getPages () {
-      return $http.get('/api/pages')
+  angular.module('myApp.services')
+    .factory('ApiService', ApiService)
+
+  function ApiService ($http) {
+    function getPosts () {
+      return $http.get('/api/posts')
               .then(res => res.data)
     }
 
-    function savePage (pageData) {
-      var id = pageData.id
-
+    function savePost (postData) {
+      var id = postData.id
       if (id === '0') {
-        return $http.post('/api/pages/add', pageData)
+        return $http.post('/api/posts', postData)
       } else {
-        return $http.post('/api/pages/update', pageData)
+        return $http.post(`/api/post/${id}`, postData)
       }
     }
 
-    function deletePage (id) {
-      return $http.delete('/api/pages/delete/' + id)
+    function deletePost (id) {
+      return $http.delete(`/api/post/${id}`)
     }
 
-    function getDetailsPage (id) {
-      return $http.get('/api/pages/admin-details/' + id)
+    function getDetailsPost (id) {
+      return $http.get(`/api/post/${id}`)
                 .then(res => res.data)
     }
 
-    return { getPages, savePage, deletePage, getDetailsPage }
-  }])
+    return { getPosts, savePost, deletePost, getDetailsPost }
+  }
+
+  ApiService.$inject = ['$http']
+})()

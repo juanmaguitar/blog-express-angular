@@ -6,9 +6,7 @@
   angular.module('myApp.components')
     .controller('NavBarCtrl', NavBarCtrl)
 
-  NavBarCtrl.$inject = ['$scope', '$cookies', 'AuthService', '$location', 'FlashMessageService']
-
-  function NavBarCtrl ($scope, $cookies, AuthService, $location, FlashMessageService) {
+  function NavBarCtrl ($scope, AuthService, $location, FlashMessageService) {
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {
@@ -18,4 +16,6 @@
         .catch(() => console.log('there was an error tying to logout'))
     }
   }
+
+  NavBarCtrl.$inject = ['$scope', 'AuthService', '$location', 'FlashMessageService']
 })()

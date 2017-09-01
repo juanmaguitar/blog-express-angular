@@ -1,12 +1,8 @@
-/* global angular */
-
 (function () {
   'use strict'
 
   angular.module('myApp.services')
     .factory('StorageService', StorageService)
-
-  StorageService.$inject = ['$window']
 
   function StorageService ($window) {
     const key = 'auth-token'
@@ -25,4 +21,6 @@
 
     return { setToken, getToken, removeToken }
   }
+
+  StorageService.$inject = ['$window']
 })()
