@@ -6,9 +6,9 @@
   angular.module('myApp.services')
     .factory('AuthService', AuthService)
 
-  AuthService.$inject = ['$http', '$rootScope', 'StorageService', 'jwtHelper']
+  AuthService.$inject = ['$http', '$rootScope', 'StorageService', 'jwtHelper', '$q']
 
-  function AuthService ($http, $rootScope, StorageService, jwtHelper) {
+  function AuthService ($http, $rootScope, StorageService, jwtHelper, $q) {
     function login ({username, password}) {
       return $http.post('/admin/login', { username, password })
           .then(response => response.data)
@@ -34,11 +34,14 @@
       console.log('logouting...')
       StorageService.removeToken()
       delete $rootScope.loggedUser
+      delete $rootScope.loggedUserId
+      return $q.resolve()
     }
 
     function setCredentials (token) {
       var tokenPayload = jwtHelper.decodeToken(token)
       $rootScope.loggedUser = tokenPayload.username
+      $rootScope.loggedUserId = tokenPayload.id
     }
 
     return { login, register, isLoggedIn, logout, setCredentials }

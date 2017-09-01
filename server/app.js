@@ -38,14 +38,12 @@ app.use('/admin/', express.static(adminPath))
 
 /* routers  */
 const authRoutes = require('./routes/auth/')
-const privateRoutes = require('./routes/private')
 const viewsRoutes = require('./routes/views/')
 const apiPagesRoutes = require('./routes/api/pages/')
 
 app.use(viewsRoutes)
 app.use('/admin', authRoutes)
-app.use('/private', privateRoutes)
-app.use('/api', apiPagesRoutes)
+app.use('/api', passport.authenticate('jwt', { session: false }), apiPagesRoutes)
 
 // app.get('/admin/*', function (request, response) {
 //   response.sendfile('../public/admin/index.html')

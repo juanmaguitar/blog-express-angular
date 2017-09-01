@@ -5,12 +5,12 @@
 
   angular.module('myApp').controller('AddEditPageCtrl', AddEditPageCtrl)
 
-  AddEditPageCtrl.$inject = ['$scope', '$log', 'ApiService', '$routeParams', '$location', 'FlashMessageService', '$filter', 'AuthService']
+  AddEditPageCtrl.$inject = ['$scope', '$rootScope', '$log', 'ApiService', '$routeParams', '$location', 'FlashMessageService', '$filter', 'AuthService']
 
-  function AddEditPageCtrl ($scope, $log, ApiService, $routeParams, $location, FlashMessageService, $filter, AuthService) {
+  function AddEditPageCtrl ($scope, $rootScope, $log, ApiService, $routeParams, $location, FlashMessageService, $filter, AuthService) {
     const id = $routeParams.id
-    $scope.authorUsername = AuthService.loggedUser.getUsername()
-    const author = AuthService.loggedUser.getId()
+    $scope.authorUsername = $rootScope.loggedUser
+    const author = $rootScope.loggedUserId
     $scope.pageContent = { id, author }
     $scope.heading = 'Add a New Page'
     $scope.mode = (id === '0') ? 'add' : 'edit'

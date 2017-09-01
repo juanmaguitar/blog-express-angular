@@ -1,4 +1,4 @@
-<div ng-if=$parent.loggedUser>
+<div ng-if=$root.loggedUser>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="/admin">Blog CMS Admin</a>
@@ -21,10 +21,10 @@
         <ul class="navbar-nav menuLogged">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Logged as {{loggedUser()}}
+              Logged as {{$root.loggedUser}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item logout-item" href="#" ng-click="logout()"><span>Logout</span> <i class="fa fa-power-off" aria-hidden="true"></i></a>
+              <a class="dropdown-item logout-item"  ng-click="logout()"><span>Logout</span> <i class="fa fa-power-off" aria-hidden="true"></i></a>
             </div>
           </li>
         </ul>

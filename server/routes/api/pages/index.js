@@ -16,14 +16,9 @@ router.get('/', function (req, res) {
 router.get('/pages', getAllPages)
 router.get('/pages/details/:url', detailsByUrl)
 
-router.post('/pages/add', sessionCheck, addPage)
-router.post('/pages/update', sessionCheck, updatePage)
-router.delete('/pages/delete/:id', sessionCheck, deletePage)
-router.get('/pages/admin-details/:id', sessionCheck, detailsById)
-
-function sessionCheck (req, res, next) {
-  if (req.cookies.loggedInUser) next()
-  else res.send(401, 'authorization failed')
-}
+router.post('/pages/add', addPage)
+router.post('/pages/update', updatePage)
+router.delete('/pages/delete/:id', deletePage)
+router.get('/pages/admin-details/:id', detailsById)
 
 module.exports = router
