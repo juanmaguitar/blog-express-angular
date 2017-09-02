@@ -8,6 +8,8 @@ import config from './config/_module'
 import routes from './routes/_module'
 import components from './components/_module'
 
+global.jQuery = require('jquery')
+
 angular.module('myApp', [
   angularRoute,
   angularSanitize,
