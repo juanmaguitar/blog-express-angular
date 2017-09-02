@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const bootstrapConfig = require('./webpack.bootstrap.config').dev
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -27,14 +28,20 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      // Bootstrap 4
+      {
+        test: /bootstrap[/\\]dist[/\\]js[/\\]umd[/\\]/, loader: 'imports-loader?jQuery=jquery'
       }
     ]
   },
   plugins: [
+    new ExtractTextPlugin('app.css', { allChunks: true }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
+      Popper: 'popper.js',
       Tether: 'tether',
       'window.Tether': 'tether',
       Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
