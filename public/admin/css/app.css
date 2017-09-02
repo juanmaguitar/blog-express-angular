@@ -78,7 +78,7 @@ body {
 
 .menuLoggedContainer { position: relative }
 .menuLogged { position: absolute; right: 0 }
-.logout-item { display:flex; justify-content: space-between;}
+.logout-item { cursor: pointer; display:flex; justify-content: space-between;}
 .logout-item .fa-power-off { margin-top: 5px; }
 .loginBox { justify-content: center; }
 

@@ -41,7 +41,7 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
-      Popper: 'popper.js',
+      Popper: ['popper.js', 'default'],
       Tether: 'tether',
       'window.Tether': 'tether',
       Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
