@@ -1,4 +1,4 @@
-function HomeCtrl ($scope, $log, ApiService, AuthService, $location, $route) {
+function HomeCtrl ($scope, $log, ApiService, AuthService, $location, $route, FlashMessageService) {
   ApiService.getPosts()
     .then(posts => { $scope.posts = posts })
     .catch(err => $log.error(err))
@@ -7,13 +7,13 @@ function HomeCtrl ($scope, $log, ApiService, AuthService, $location, $route) {
     e.preventDefault()
     ApiService.deletePost(id)
       .then(() => {
-        console.log('item deleted')
+        FlashMessageService.setMessage(`Post Deleted`)
         $route.reload()
       })
   }
 }
 
-HomeCtrl.$inject = ['$scope', '$log', 'ApiService', 'AuthService', '$location', '$route']
+HomeCtrl.$inject = ['$scope', '$log', 'ApiService', 'AuthService', '$location', '$route', 'FlashMessageService']
 
 export default HomeCtrl
 export const name = 'HomeCtrl'

@@ -78,6 +78,7 @@ body {
 
 .menuLoggedContainer { position: relative }
 .menuLogged { position: absolute; right: 0 }
+.menuLogged .dropdown-toggle { cursor: pointer; }
 .logout-item { cursor: pointer; display:flex; justify-content: space-between;}
 .logout-item .fa-power-off { margin-top: 5px; }
 .loginBox { justify-content: center; }
