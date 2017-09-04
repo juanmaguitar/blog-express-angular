@@ -38,9 +38,10 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('app.css', { allChunks: true }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
       'window.jQuery': 'jquery',
+      'window.$': 'jquery',
+      'jQuery': 'jquery',
+      '$': 'jquery',
       Popper: ['popper.js', 'default'],
       Tether: 'tether',
       'window.Tether': 'tether',

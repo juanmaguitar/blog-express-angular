@@ -8,6 +8,8 @@ import addInterceptor from './addInterceptor'
 import markedSettings from './markedSettings'
 import setRouteDefaults from './setRouteDefaults'
 
+import 'bootstrap-markdown'
+
 angular.module('myApp.config',
   [
     ngMarked,

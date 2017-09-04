@@ -8,9 +8,6 @@ import config from './config/_module'
 import routes from './routes/_module'
 import components from './components/_module'
 
-import Popper from 'popper.js'
-window.Popper = Popper
-
 angular.module('myApp', [
   angularRoute,
   angularSanitize,
