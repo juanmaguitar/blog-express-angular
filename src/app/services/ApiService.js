@@ -9,7 +9,7 @@ function ApiService ($http) {
     if (id === '0') {
       return $http.post('/api/posts', postData)
     } else {
-      return $http.post(`/api/post/${id}`, postData)
+      return $http.put(`/api/post/${id}`, postData)
     }
   }
 
