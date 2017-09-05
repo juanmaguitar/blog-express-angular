@@ -84,6 +84,9 @@
     "globals": [
       "__require",
       "angular"
+    ],
+    "ignore": [
+      "/src/app/libs/*"
     ]
   },
   "remarkConfig": {
