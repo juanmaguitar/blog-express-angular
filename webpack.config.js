@@ -45,6 +45,8 @@ module.exports = {
       Popper: ['popper.js', 'default'],
       Tether: 'tether',
       'window.Tether': 'tether',
+      marked: 'marked',
+      'window.marked': 'marked',
       Alert: 'exports-loader?Alert!bootstrap/js/dist/alert',
       Button: 'exports-loader?Button!bootstrap/js/dist/button',
       Carousel: 'exports-loader?Carousel!bootstrap/js/dist/carousel',
