@@ -45,20 +45,36 @@ body {
   margin-bottom: 120px;
 }
 
-.menuLoggedContainer { position: relative }
-.menuLogged { position: absolute; right: 0 }
-.menuLogged .dropdown-toggle { cursor: pointer; }
-.logout-item { cursor: pointer; display:flex; justify-content: space-between;}
-.logout-item .fa-power-off { margin-top: 5px; }
+.menuLoggedContainer {
+  position: relative
+}
+
+.menuLogged {
+  position: absolute;
+  right: 0;
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+}
+
+.logout-item {
+  cursor: pointer;
+  display:flex;
+  justify-content: space-between;
+  .fa-power-off {
+    margin-top: 5px;
+  }
+}
+
 .loginBox { justify-content: center; }
 
 
 markdown-editor {
    border: 1px solid #ccc;
    border-radius: 2px;
-}
-markdown-editor textarea {
-   font-family: monospace;
+   textarea {
+      font-family: monospace;
+   }
 }
 
 .table-pages {

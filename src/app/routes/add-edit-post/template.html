@@ -3,7 +3,7 @@
 
 <form role="form" id="add-page" ng-submit="savePost()">
   <div ng-if="mode === 'edit'" class="form-group">
-    <label>Page ID</label>
+    <label>Post ID</label>
     <input class="form-control" type="text" readonly ng-model="postContent._id" />
   </div>
 
@@ -13,16 +13,16 @@
   </div>
 
   <div class="form-group">
-    <label>Page Title</label>
+    <label>Post Title</label>
     <input class="form-control" type="text" ng-change="updateURL()" ng-model="postContent.title" />
   </div>
   <div class="form-group">
-    <label>Page URL Alias</label>
+    <label>Post URL Alias</label>
     <input class="form-control" type="text" readonly ng-model="postContent.url" />
   </div>
 
   <div class="form-group">
-    <label>Page Content</label>
+    <label>Post Content</label>
     <div class="row">
       <div class="col-md-6">
         <h5>Markdown</h5>

@@ -10,8 +10,8 @@ module.exports = {
   },
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, 'public/admin/js'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'public/admin'),
+    filename: 'js/[name].bundle.js'
   },
   module: {
     loaders: [
@@ -28,11 +28,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       // Bootstrap 4
       {
@@ -47,12 +53,15 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: 'file-loader'
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[name].[ext]'
+        }
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('app.css', { allChunks: true }),
+    new ExtractTextPlugin('css/app.css', { allChunks: true }),
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery',
       'window.$': 'jquery',
