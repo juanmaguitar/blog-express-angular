@@ -10,6 +10,10 @@ import setRouteDefaults from './setRouteDefaults'
 
 import 'bootstrap-markdown/js/bootstrap-markdown.js'
 
+import 'bootstrap-markdown/css/bootstrap-markdown.min.css'
+import 'highlight.js/styles/github.css'
+import 'angular-markdown-editor/styles/angular-markdown-editor.css'
+
 angular.module('myApp.config',
   [
     ngMarked,

@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const bootstrapConfig = require('./webpack.bootstrap.config').dev
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -9,7 +10,7 @@ module.exports = {
     bootstrap: bootstrapConfig
   },
   output: {
-    publicPath: '/',
+    publicPath: '/admin',
     path: path.resolve(__dirname, 'public/admin'),
     filename: 'js/[name].bundle.js'
   },
@@ -61,6 +62,10 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'CMS Admin Blog',
+      template: 'src/app/assets/index.html'
+    }),
     new ExtractTextPlugin('css/app.css', { allChunks: true }),
     new webpack.ProvidePlugin({
       'window.jQuery': 'jquery',
