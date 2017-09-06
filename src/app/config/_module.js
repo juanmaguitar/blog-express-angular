@@ -2,19 +2,19 @@ import angular from 'angular'
 
 import ngMarked from 'angular-marked'
 import ngHighlight from 'angular-highlightjs'
-import ngMarkdownEditor from '../libs/angular-markdown-editor'
+import 'angular-markdown-editor/src/angular-markdown-editor.js'
 
 import addInterceptor from './addInterceptor'
 import markedSettings from './markedSettings'
 import setRouteDefaults from './setRouteDefaults'
 
-import '../libs/bootstrap-markdown'
+import 'bootstrap-markdown/js/bootstrap-markdown.js'
 
 angular.module('myApp.config',
   [
     ngMarked,
     ngHighlight,
-    ngMarkdownEditor
+    'angular-markdown-editor'
   ])
   .config(addInterceptor)
   .config(markedSettings)

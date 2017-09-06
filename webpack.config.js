@@ -9,6 +9,7 @@ module.exports = {
     bootstrap: bootstrapConfig
   },
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, 'public/admin/js'),
     filename: '[name].bundle.js'
   },
@@ -26,12 +27,27 @@ module.exports = {
         loader: 'html-loader'
       },
       {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       // Bootstrap 4
       {
-        test: /bootstrap[/\\]dist[/\\]js[/\\]umd[/\\]/, loader: 'imports-loader?jQuery=jquery'
+        test: /bootstrap[/\\]dist[/\\]js[/\\]umd[/\\]/,
+        loader: 'imports-loader?jQuery=jquery'
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
+        // loader: "url?limit=10000"
+        use: 'url-loader'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        use: 'file-loader'
       }
     ]
   },

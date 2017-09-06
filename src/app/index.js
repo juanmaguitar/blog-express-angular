@@ -8,6 +8,12 @@ import config from './config/_module'
 import routes from './routes/_module'
 import components from './components/_module'
 
+import 'font-awesome/scss/font-awesome.scss'
+import 'bootstrap-markdown/css/bootstrap-markdown.min.css'
+import 'highlight.js/styles/github.css'
+import 'angular-markdown-editor/styles/angular-markdown-editor.css'
+import './scss/app.scss'
+
 angular.module('myApp', [
   angularRoute,
   angularSanitize,
