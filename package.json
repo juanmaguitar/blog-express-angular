@@ -31,6 +31,8 @@
     "build:front": "npm run clean:front && npm run build -- --env.target=front",
     "build:front:dev": "npm run build:front -- --env.env=dev",
     "build:front:prod": "npm run build:front -- --env.env=prod",
+    "": "---------- ALL (ADMIN & FRONT) -----------------------",
+    "build:all:dev": "npm run build:admin:dev && npm run build:front:dev",
     "": "----------------------------------------------------",
     "debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack"
   },
