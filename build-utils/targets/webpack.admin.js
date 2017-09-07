@@ -1,6 +1,6 @@
 /* global __webpackBase */
 const path = require('path')
-const bootstrapConfig = require('../config/webpack.bootstrap').dev
+const bootstrapConfig = require('../config/webpack.bootstrap').prod
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
