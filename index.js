@@ -1,4 +1,6 @@
 global.__require = require('./server/helpers/__requireFrom')(`${__dirname}/server`)
+global.__base = __dirname
+
 require('dotenv').load()
 
 const app = require('./server/app')

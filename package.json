@@ -16,13 +16,23 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "build:js": "npm run clean && webpack",
-    "build:js:watch": "build:js -- --watch",
-    "build:scss": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css",
-    "build:scss:watch": "node-sass src/scss/clean-blog.scss client/css/clean-blog.css --watch",
-    "clean": "rm -rf public/admin",
+    "build": "webpack",
     "lint:md": "remark README.md",
-    "hook:standard": "./hooks/standard.sh"
+    "hook:standard": "./hooks/standard.sh",
+    "webpack": "node ./node_modules/webpack/bin/webpack",
+    "": "---------- ADMIN -----------------------------------",
+    "clean:admin": "rm -rf public/admin",
+    "build:admin": "npm run clean:admin && npm run build -- --env.target=admin",
+    "build:admin:dev": "npm run build:admin -- --env.env=dev",
+    "build:admin:dev:watch": "npm run build:admin:dev -- --watch",
+    "build:admin:prod": "npm run build:admin -- --env.env=prod",
+    "": "---------- FRONT -----------------------------------",
+    "clean:front": "rm -rf public/front",
+    "build:front": "npm run clean:front && npm run build -- --env.target=front",
+    "build:front:dev": "npm run build:front -- --env.env=dev",
+    "build:front:prod": "npm run build:front -- --env.env=prod",
+    "": "----------------------------------------------------",
+    "debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack"
   },
   "dependencies": {
     "angular-markdown-editor": "^1.1.3",
@@ -70,7 +80,6 @@
     "imports-loader": "^0.7.1",
     "jquery": "^3.2.1",
     "marked": "^0.3.6",
-    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "popper.js": "^1.12.5",
     "postcss-loader": "^2.0.6",
@@ -79,7 +88,8 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "webpack-merge": "^4.1.0"
   },
   "main": "index.js",
   "pre-commit": [
@@ -88,10 +98,11 @@
   "standard": {
     "globals": [
       "__require",
+      "__base",
       "angular"
     ],
     "ignore": [
-      "/src/app/libs/*"
+      "/src/front/js/libs/*"
     ]
   },
   "remarkConfig": {
