@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular CMS</title>
+<link href="/admin/css/admin.css" rel="stylesheet"><link href="/admin/css/bootstrap.css" rel="stylesheet"></head>
+
+<body>
+
+  <header>
+    <nav-bar loggedUser="loggedUser"></nav-bar>
+  </header>
+  <div class="container">
+    <message-flash></message-flash>
+    <ng-view></ng-view>
+  </div>
+  <footer class="footer">Copyright 2014 Angular CMS</footer>
+<script type="text/javascript" src="/admin/js/admin.bundle.js"></script><script type="text/javascript" src="/admin/js/bootstrap.bundle.js"></script></body>
+
+</html>

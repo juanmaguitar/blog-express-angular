@@ -29,12 +29,10 @@ const viewsPath = path.join(__dirname, 'views')
 app.set('views', viewsPath)
 
 /* public paths  */
-const bowerComponentsPath = path.join(__base, 'public/bower_components')
 const assetsPath = path.join(__base, 'public/assets')
 const frontPath = path.join(__base, 'public/front')
 const adminPath = path.join(__base, 'public/admin')
 
-app.use(express.static(bowerComponentsPath))
 app.use(express.static(assetsPath))
 app.use(express.static(frontPath))
 app.use('/admin/', express.static(adminPath))
