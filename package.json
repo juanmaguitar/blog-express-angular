@@ -106,7 +106,8 @@
       "$"
     ],
     "ignore": [
-      "/src/front/js/libs/*"
+      "/src/front/js/libs/*",
+      "/public/**/*.*"
     ]
   },
   "remarkConfig": {
