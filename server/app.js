@@ -47,8 +47,10 @@ app.get('/admin', (req, res) => {
 const authRoutes = require('./routes/auth/')
 const viewsRoutes = require('./routes/views/')
 const apiPagesRoutes = require('./routes/api/')
+const mailRoutes = require('./routes/mail/')
 
 app.use(viewsRoutes)
+app.use('/mail', mailRoutes)
 app.use('/admin', authRoutes)
 app.use('/api', passport.authenticate('jwt', { session: false }), apiPagesRoutes)
 

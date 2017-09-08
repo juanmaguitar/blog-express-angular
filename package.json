@@ -20,20 +20,18 @@
     "lint:md": "remark README.md",
     "hook:standard": "./hooks/standard.sh",
     "webpack": "node ./node_modules/webpack/bin/webpack",
-    "": "---------- ADMIN -----------------------------------",
+    "": "----------------------------------------------------",
     "clean:admin": "rm -rf public/admin",
     "build:admin": "npm run clean:admin && npm run build -- --env.target=admin",
     "build:admin:dev": "npm run build:admin -- --env.env=dev",
     "build:admin:dev:watch": "npm run build:admin:dev -- --watch",
     "build:admin:prod": "npm run build:admin -- --env.env=prod",
-    "": "---------- FRONT -----------------------------------",
     "clean:front": "rm -rf public/front",
     "build:front": "npm run clean:front && npm run build -- --env.target=front",
     "build:front:dev": "npm run build:front -- --env.env=dev",
+    "build:front:dev:watch": "npm run build:front:dev -- --watch",
     "build:front:prod": "npm run build:front -- --env.env=prod",
-    "": "---------- ALL (ADMIN & FRONT) -----------------------",
     "build:all:dev": "npm run build:admin:dev && npm run build:front:dev",
-    "": "----------------------------------------------------",
     "debug": "node --inspect --debug-brk ./node_modules/webpack/bin/webpack"
   },
   "dependencies": {
@@ -49,6 +47,7 @@
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "mongoose": "^4.10.5",
+    "nodemailer": "^4.1.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
@@ -101,7 +100,8 @@
     "globals": [
       "__require",
       "__base",
-      "angular"
+      "angular",
+      "$"
     ],
     "ignore": [
       "/src/front/js/libs/*"
